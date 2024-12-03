@@ -30,13 +30,14 @@
   margin-bottom: 15px;
 }
 
-.name-canvas .btn-danger {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+/* Hide number spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.name-canvas:hover .btn-danger {
-  opacity: 1;
-  pointer-events: auto;
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

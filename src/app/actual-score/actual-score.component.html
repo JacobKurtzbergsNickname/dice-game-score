@@ -1,0 +1,42 @@
+<div class="row">
+
+  <!-- Individual score entries -->
+   @for (entry of scoreEntries; track $index) {
+    @if(entry === 0){
+      @if ($index > 1 && scoreEntries[$index - 2] === 0){
+        <div> 💀  💀  💀 </div>
+      } @else {
+        @if($index > 0 && scoreEntries[$index - 1] === 0){
+          <div> D: D: D: </div>
+        } @else {
+          <div> ): ): ): </div>
+        }
+      }
+
+    } @else {
+
+      <div> {{entry}} </div>
+    }
+   }
+
+  <!-- Score input -->
+  <div class="col-md-7">
+    <div class="form-container">
+      <input
+        type="number"
+        placeholder="Score"
+        class="form-control"
+        [(ngModel)]="scoreInput"
+        >
+    </div>
+  </div>
+  <div class="col-md-3">
+    <button
+      class="btn btn-primary"
+      (click)="enterScore()"
+    >naxter</button>
+  </div>
+
+  <!-- Score display -->
+  <p> {{score}} </p>
+</div>

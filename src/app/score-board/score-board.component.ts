@@ -10,4 +10,6 @@ import { ScoreTileComponent } from "../score-tile/score-tile.component";
 })
 export class ScoreBoardComponent {
 
+  numberOfTiles = 1;
+
 }

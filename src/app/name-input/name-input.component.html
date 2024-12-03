@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row name-canvas">
   @if (!name) {
     <div class="col-md-7">
       <div class="form-container">
@@ -10,18 +10,18 @@
       </div>
     </div>
     <div class="col-md-3">
-      <button class="btn btn-primary">Yep!</button>
+      <button class="btn btn-primary">bassd!</button>
     </div>
   }
   @if (name) {
-    <div class="col-md-7">
-      <h3 class="name-tag"> {{name}} </h3>
-    </div>
-    <div class="col-md-3">
-      <button
-        class="btn btn-danger"
-        (click)="removeName()"
-      >woops</button>
-    </div>
+  <div class="col-md-7">
+    <h3 class="name-tag"> {{name}} </h3>
+  </div>
+  <div class="col-md-3">
+    <button
+      class="btn btn-danger"
+      (click)="removeName()"
+    >weg!</button>
+  </div>
   }
 </div>
