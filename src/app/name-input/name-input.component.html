@@ -1,0 +1,27 @@
+<div class="row">
+  @if (!name) {
+    <div class="col-md-7">
+      <div class="form-container">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter name"
+          (change)="changeName($event)">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-primary">Yep!</button>
+    </div>
+  }
+  @if (name) {
+    <div class="col-md-7">
+      <h3 class="name-tag"> {{name}} </h3>
+    </div>
+    <div class="col-md-3">
+      <button
+        class="btn btn-danger"
+        (click)="removeName()"
+      >woops</button>
+    </div>
+  }
+</div>

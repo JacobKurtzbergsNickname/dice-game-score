@@ -1,0 +1,13 @@
+.form-control {
+  background-color: gray;
+  color: yellowgreen;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 50%;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

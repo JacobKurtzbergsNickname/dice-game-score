@@ -1,0 +1,31 @@
+.form-control {
+  background-color: gray;
+  color: yellowgreen;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: yellowgreen;
+  color: white;
+}
+
+.btn-danger {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: red;
+  color: white;
+}
+
+.name-tag {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
