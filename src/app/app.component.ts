@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ScoreBoardComponent } from "./score-board/score-board.component";
+
+import { ScoreBoardComponent } from './score-board/score-board.component';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,4 @@ import { ScoreBoardComponent } from "./score-board/score-board.component";
   imports: [ScoreBoardComponent],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  title = 'dice-game-score';
-}
+export class AppComponent {}
