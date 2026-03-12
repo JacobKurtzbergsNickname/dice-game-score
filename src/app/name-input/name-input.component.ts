@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'pairodice-name-input',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './name-input.component.html',
-  styleUrl: './name-input.component.css'
+  styleUrl: './name-input.component.css',
 })
 export class NameInputComponent {
+  name = '';
+  draftName = '';
 
-  name = "";
-
-  changeName(event: any) {
-    this.name = event.target.value;
+  saveName(): void {
+    this.name = this.draftName.trim();
   }
 
-  removeName() {
-    this.name = "";
+  removeName(): void {
+    this.name = '';
+    this.draftName = '';
   }
-
 }
