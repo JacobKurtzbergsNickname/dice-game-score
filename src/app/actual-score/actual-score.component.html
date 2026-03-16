@@ -1,7 +1,19 @@
 <div class="space-y-4">
-  <div class="rounded-xl border border-lime-500/40 bg-black/50 p-3">
+  <div
+    class="score-display rounded-xl border border-lime-500/40 bg-black/50 p-3"
+    [class.milestone-over-1000]="scoreMilestone === 'over1000'"
+    [class.milestone-over-2000]="scoreMilestone === 'over2000'"
+    [class.milestone-over-5000]="scoreMilestone === 'over5000'"
+    [class.milestone-over-9000]="scoreMilestone === 'over9000'"
+    [class.milestone-autowin]="scoreMilestone === 'autoWin'"
+  >
     <p class="text-xs text-lime-300/70">Gesamtpunktzahl</p>
-    <p class="pt-1 text-2xl text-lime-200">{{ score }}</p>
+    <p class="score-value pt-1 text-2xl text-lime-200">{{ score }}</p>
+    @if (milestoneLabel) {
+      <div class="pt-2">
+        <span class="milestone-chip" [class.milestone-chip-autowin]="hasAutoWin">{{ milestoneLabel }}</span>
+      </div>
+    }
   </div>
 
   <mat-form-field appearance="outline" class="w-full">

@@ -39,4 +39,29 @@ describe('ActualScoreComponent', () => {
     expect(component.score).toBe(14);
     expect(component.scoreInput).toBeNull();
   });
+
+  it('shows DBZ milestone for scores over 9000', () => {
+    component.score = 9001;
+    fixture.detectChanges();
+
+    const hostElement: HTMLElement = fixture.nativeElement;
+    const scoreDisplay = hostElement.querySelector('.score-display');
+    const milestoneChip = hostElement.querySelector('.milestone-chip');
+
+    expect(scoreDisplay?.classList.contains('milestone-over-9000')).toBe(true);
+    expect(milestoneChip?.textContent).toContain("IT'S OVER 9000!");
+  });
+
+  it('shows auto-win milestone at 10000 and above', () => {
+    component.score = 10000;
+    fixture.detectChanges();
+
+    const hostElement: HTMLElement = fixture.nativeElement;
+    const scoreDisplay = hostElement.querySelector('.score-display');
+    const milestoneChip = hostElement.querySelector('.milestone-chip');
+
+    expect(component.hasAutoWin).toBe(true);
+    expect(scoreDisplay?.classList.contains('milestone-autowin')).toBe(true);
+    expect(milestoneChip?.textContent).toContain('Over 10000 - Auto Win!');
+  });
 });

@@ -41,3 +41,136 @@ input[type='number'] {
   background: rgb(239 68 68 / 0.2);
   color: rgb(254 202 202);
 }
+
+.score-display {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 180ms ease-out, border-color 180ms ease-out;
+}
+
+.score-value {
+  transition: text-shadow 180ms ease-out, color 180ms ease-out;
+}
+
+.milestone-chip {
+  display: inline-block;
+  border: 1px solid rgb(163 230 53 / 0.4);
+  border-radius: 999px;
+  padding: 0.42rem 0.8rem;
+  font-size: 0.62rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  background: rgb(132 204 22 / 0.18);
+  color: rgb(236 252 203);
+}
+
+.milestone-over-1000 {
+  box-shadow: 0 0 18px rgb(163 230 53 / 0.16);
+}
+
+.milestone-over-1000 .score-value {
+  animation: neon-pulse 1.9s ease-in-out infinite;
+}
+
+.milestone-over-2000 {
+  box-shadow: 0 0 22px rgb(132 204 22 / 0.22), inset 0 0 20px rgb(163 230 53 / 0.08);
+}
+
+.milestone-over-2000::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(0deg, rgb(0 0 0 / 0.2), rgb(0 0 0 / 0.2) 1px, transparent 1px, transparent 3px);
+  opacity: 0.28;
+}
+
+.milestone-over-5000 {
+  border-color: rgb(251 146 60 / 0.5);
+  box-shadow: 0 0 26px rgb(251 146 60 / 0.24), inset 0 0 20px rgb(251 146 60 / 0.08);
+}
+
+.milestone-over-5000 .score-value {
+  color: rgb(254 215 170);
+  text-shadow: 0 0 10px rgb(251 146 60 / 0.45);
+  animation: amber-flicker 2.2s steps(2, end) infinite;
+}
+
+.milestone-over-9000 {
+  border-color: rgb(252 165 165 / 0.55);
+  box-shadow: 0 0 30px rgb(239 68 68 / 0.28), 0 0 40px rgb(251 191 36 / 0.2);
+}
+
+.milestone-over-9000 .score-value {
+  color: rgb(254 202 202);
+  text-shadow: 0 0 12px rgb(239 68 68 / 0.5), 0 0 20px rgb(251 191 36 / 0.35);
+  animation: power-surge 0.8s ease-in-out infinite;
+}
+
+.milestone-autowin {
+  border-color: rgb(250 204 21 / 0.6);
+  box-shadow: 0 0 32px rgb(250 204 21 / 0.35), inset 0 0 22px rgb(250 204 21 / 0.12);
+}
+
+.milestone-autowin .score-value {
+  color: rgb(254 240 138);
+  text-shadow: 0 0 14px rgb(250 204 21 / 0.6), 0 0 24px rgb(250 204 21 / 0.45);
+  animation: winner-shimmer 1.4s linear infinite;
+}
+
+.milestone-chip-autowin {
+  border-color: rgb(250 204 21 / 0.6);
+  background: rgb(250 204 21 / 0.18);
+  color: rgb(254 240 138);
+}
+
+@keyframes neon-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 4px rgb(132 204 22 / 0.25);
+  }
+  50% {
+    text-shadow: 0 0 10px rgb(163 230 53 / 0.42);
+  }
+}
+
+@keyframes amber-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  47% {
+    opacity: 0.88;
+  }
+  49% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0.92;
+  }
+}
+
+@keyframes power-surge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-0.35px);
+  }
+  75% {
+    transform: translateX(0.35px);
+  }
+}
+
+@keyframes winner-shimmer {
+  0% {
+    text-shadow: 0 0 10px rgb(250 204 21 / 0.55);
+  }
+  50% {
+    text-shadow: 0 0 16px rgb(254 240 138 / 0.8);
+  }
+  100% {
+    text-shadow: 0 0 10px rgb(250 204 21 / 0.55);
+  }
+}
