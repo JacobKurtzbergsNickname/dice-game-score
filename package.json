@@ -13,6 +13,7 @@
     "lint": "ng lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "test:e2e": "PLAYWRIGHT_BROWSERS_PATH=/root/.cache/ms-playwright playwright test",
     "serve:ssr:dice-game-score": "node dist/dice-game-score/server/server.mjs"
   },
   "private": true,

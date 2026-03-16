@@ -59,8 +59,8 @@ src/app/
 
 ## Routing
 
-| Path    | Component          |
-|---------|--------------------|
+| Path    | Component            |
+| ------- | -------------------- |
 | `/`     | LandingPageComponent |
 | `/game` | ScoreBoardComponent  |
 

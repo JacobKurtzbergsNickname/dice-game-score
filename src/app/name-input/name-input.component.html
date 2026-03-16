@@ -2,11 +2,16 @@
   @if (!name) {
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>Name</mat-label>
-      <input matInput type="text" placeholder="Enter name" [(ngModel)]="draftName" (keydown.enter)="saveName(); $event.preventDefault()" (blur)="saveName()" />
+      <input
+        matInput
+        type="text"
+        placeholder="Enter name"
+        [(ngModel)]="draftName"
+        (keydown.enter)="saveName(); $event.preventDefault()"
+        (blur)="saveName()"
+      />
       @if (draftName.trim()) {
-        <button mat-icon-button matSuffix type="button" aria-label="Save name" (click)="saveName()">
-          ✓
-        </button>
+        <button mat-icon-button matSuffix type="button" aria-label="Save name" (click)="saveName()">✓</button>
       }
     </mat-form-field>
   }

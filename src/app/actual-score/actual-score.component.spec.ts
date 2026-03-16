@@ -40,6 +40,61 @@ describe('ActualScoreComponent', () => {
     expect(component.scoreInput).toBeNull();
   });
 
+  it('resets score to zero after three consecutive zeroes', () => {
+    component.scoreInput = 5;
+    component.enterScore();
+    component.scoreInput = 0;
+    component.enterScore();
+    component.scoreInput = 0;
+    component.enterScore();
+    component.scoreInput = 0;
+    component.enterScore();
+
+    expect(component.score).toBe(0);
+  });
+
+  it('does not reset score after only one or two consecutive zeroes', () => {
+    component.scoreInput = 10;
+    component.enterScore();
+    component.scoreInput = 0;
+    component.enterScore();
+    component.scoreInput = 0;
+    component.enterScore();
+
+    expect(component.score).toBe(10);
+  });
+
+  it('still requires three consecutive zeroes to reset after a previous reset', () => {
+    // first reset
+    component.scoreInput = 5;
+    component.enterScore();
+    component.scoreInput = 0;
+    component.enterScore();
+    component.scoreInput = 0;
+    component.enterScore();
+    component.scoreInput = 0;
+    component.enterScore();
+
+    // rebuild score
+    component.scoreInput = 7;
+    component.enterScore();
+
+    // one zero: no reset
+    component.scoreInput = 0;
+    component.enterScore();
+    expect(component.score).toBe(7);
+
+    // second zero: no reset
+    component.scoreInput = 0;
+    component.enterScore();
+    expect(component.score).toBe(7);
+
+    // third zero: second reset
+    component.scoreInput = 0;
+    component.enterScore();
+    expect(component.score).toBe(0);
+  });
+
   it('shows DBZ milestone for scores over 9000', () => {
     component.score = 9001;
     fixture.detectChanges();
