@@ -1,31 +1,36 @@
-<div class="row">
-  <!-- Individual score entries -->
-  @for (entry of scoreEntries; track $index) {
-    @if (entry === 0) {
-      @if ($index > 1 && scoreEntries[$index - 2] === 0) {
-        <div>💀 💀 💀</div>
-      } @else {
-        @if ($index > 0 && scoreEntries[$index - 1] === 0) {
-          <div>D: D: D:</div>
+<div class="space-y-4">
+  <div class="rounded-xl border border-lime-500/40 bg-black/50 p-3">
+    <p class="text-xs text-lime-300/70">Gesamtpunktzahl</p>
+    <p class="pt-1 text-2xl text-lime-200">{{ score }}</p>
+  </div>
+
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Neue Runde</mat-label>
+    <input matInput type="number" placeholder="Score" [(ngModel)]="scoreInput" (keydown.enter)="enterScore(); $event.preventDefault()" (blur)="enterScore()" />
+    @if (scoreInput !== null) {
+      <button mat-icon-button matSuffix type="button" aria-label="Save score" (click)="enterScore()">
+        ✓
+      </button>
+    }
+  </mat-form-field>
+
+  @if (scoreEntries.length > 0) {
+    <div class="flex flex-wrap gap-2 rounded-xl border border-lime-500/30 bg-black/40 p-3">
+      @for (entry of scoreEntries; track $index) {
+        @if (entry === 0) {
+          @if ($index > 1 && scoreEntries[$index - 2] === 0) {
+            <span class="score-chip score-chip-critical">NIX! NIX! NIX!</span>
+          } @else {
+            @if ($index > 0 && scoreEntries[$index - 1] === 0) {
+              <span class="score-chip score-chip-warning">D: D: D:</span>
+            } @else {
+              <span class="score-chip score-chip-caution">): ): ):</span>
+            }
+          }
         } @else {
-          <div>): ): ):</div>
+          <span class="score-chip score-chip-score">{{ entry }}</span>
         }
       }
-    } @else {
-      <div>{{ entry }}</div>
-    }
-  }
-
-  <!-- Score input -->
-  <div class="col-md-7">
-    <div class="form-container">
-      <input type="number" placeholder="Score" class="form-control" [(ngModel)]="scoreInput" />
     </div>
-  </div>
-  <div class="col-md-3">
-    <button class="btn btn-primary" (click)="enterScore()">naxter</button>
-  </div>
-
-  <!-- Score display -->
-  <p>{{ score }}</p>
+  }
 </div>

@@ -26,6 +26,7 @@ describe('NameInputComponent', () => {
     component.saveName();
 
     expect(component.name).toBe('Alex');
+    expect(component.draftName).toBe('Alex');
   });
 
   it('clears active and draft names', () => {

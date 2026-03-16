@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { ScoreBoardComponent } from './score-board.component';
 
@@ -9,6 +10,7 @@ describe('ScoreBoardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ScoreBoardComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ScoreBoardComponent);

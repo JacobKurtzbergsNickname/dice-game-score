@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-
-import { ScoreBoardComponent } from './score-board/score-board.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'pairodice-root',
   standalone: true,
-  imports: [ScoreBoardComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
 })
 export class AppComponent {}

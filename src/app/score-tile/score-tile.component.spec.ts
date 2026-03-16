@@ -12,6 +12,7 @@ describe('ScoreTileComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(ScoreTileComponent);
+    fixture.componentRef.setInput('playerIndex', 1);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,21 +1,22 @@
-<div class="row name-canvas">
+<div class="space-y-3">
   @if (!name) {
-    <div class="col-md-7">
-      <div class="form-container">
-        <input type="text" class="form-control" placeholder="Enter name" [(ngModel)]="draftName" />
-      </div>
-    </div>
-    <div class="col-md-3">
-      <button class="btn btn-primary" (click)="saveName()">bassd!</button>
-    </div>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" placeholder="Enter name" [(ngModel)]="draftName" (keydown.enter)="saveName(); $event.preventDefault()" (blur)="saveName()" />
+      @if (draftName.trim()) {
+        <button mat-icon-button matSuffix type="button" aria-label="Save name" (click)="saveName()">
+          ✓
+        </button>
+      }
+    </mat-form-field>
   }
 
   @if (name) {
-    <div class="col-md-7">
-      <h3 class="name-tag">{{ name }}</h3>
+    <div class="rounded-xl border border-lime-500/40 bg-black/50 p-3">
+      <p class="text-xs text-lime-300/70">Aktiver Name</p>
+      <h3 class="pt-1 text-sm text-lime-200 sm:text-base">{{ name }}</h3>
     </div>
-    <div class="col-md-3">
-      <button class="btn btn-danger" (click)="removeName()">weg!</button>
-    </div>
+
+    <button mat-stroked-button color="warn" class="h-11! w-full!" type="button" (click)="removeName()">weg!</button>
   }
 </div>

@@ -1,13 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'tailwindcss';
 
+:root {
+  color-scheme: dark;
+
+  /* Material system color tuning for retro lime look. */
+  --mat-sys-primary: #84cc16;
+  --mat-sys-on-primary: #111827;
+  --mat-sys-surface: #0a0a0a;
+  --mat-sys-on-surface: #d9f99d;
+  --mat-sys-outline: #65a30d;
+}
+
 body {
-  background-color: black !important;
-  color: yellowgreen !important;
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at top, #1f2937 0%, #050505 55%);
+  color: #bef264;
+  font-family: 'Press Start 2P', cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.mat-mdc-card {
+  background: rgb(10 10 10 / 0.75) !important;
+  border-radius: 1rem !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+
+  --mdc-outlined-text-field-outline-color: rgb(132 204 22 / 0.45);
+  --mdc-outlined-text-field-hover-outline-color: rgb(163 230 53 / 0.75);
+  --mdc-outlined-text-field-focus-outline-color: #a3e635;
+  --mdc-outlined-text-field-disabled-outline-color: rgb(132 204 22 / 0.2);
+
+  --mdc-outlined-text-field-label-text-color: rgb(217 249 157 / 0.8);
+  --mdc-outlined-text-field-hover-label-text-color: rgb(217 249 157 / 0.95);
+  --mdc-outlined-text-field-focus-label-text-color: #bef264;
+  --mdc-outlined-text-field-disabled-label-text-color: rgb(217 249 157 / 0.45);
+
+  --mdc-outlined-text-field-input-text-color: #d9f99d;
+  --mdc-outlined-text-field-disabled-input-text-color: rgb(217 249 157 / 0.45);
+  --mdc-outlined-text-field-caret-color: #bef264;
+}
+
+.mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-color: rgb(0 0 0 / 0.55);
+}
+
+.mat-mdc-form-field .mdc-floating-label,
+.mat-mdc-form-field .mat-mdc-input-element,
+.mat-mdc-form-field .mat-mdc-form-field-hint,
+.mat-mdc-form-field .mat-mdc-form-field-error {
+  color: #d9f99d !important;
+}
+
+.mat-mdc-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-outlined-button {
   font-family: 'Press Start 2P', cursive !important;
 }
 
-.container {
-  max-width: 1500px !important;
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-container-color: #84cc16;
+  --mdc-filled-button-label-text-color: #111827;
+  --mdc-filled-button-hover-state-layer-color: #d9f99d;
+  --mdc-filled-button-hover-state-layer-opacity: 0.12;
+  --mdc-filled-button-focus-state-layer-color: #ecfccb;
+  --mdc-filled-button-focus-state-layer-opacity: 0.18;
+  --mdc-filled-button-pressed-state-layer-color: #ecfccb;
+  --mdc-filled-button-pressed-state-layer-opacity: 0.22;
+  --mdc-filled-button-disabled-container-color: rgb(132 204 22 / 0.3);
+  --mdc-filled-button-disabled-label-text-color: rgb(17 24 39 / 0.65);
+}
+
+.mat-mdc-outlined-button {
+  --mdc-outlined-button-outline-color: rgb(132 204 22 / 0.55);
+  --mdc-outlined-button-label-text-color: #d9f99d;
+  --mdc-outlined-button-hover-state-layer-color: #bef264;
+  --mdc-outlined-button-hover-state-layer-opacity: 0.1;
+  --mdc-outlined-button-focus-state-layer-color: #d9f99d;
+  --mdc-outlined-button-focus-state-layer-opacity: 0.16;
+  --mdc-outlined-button-pressed-state-layer-color: #d9f99d;
+  --mdc-outlined-button-pressed-state-layer-opacity: 0.2;
+  --mdc-outlined-button-disabled-outline-color: rgb(132 204 22 / 0.24);
+  --mdc-outlined-button-disabled-label-text-color: rgb(217 249 157 / 0.42);
 }
