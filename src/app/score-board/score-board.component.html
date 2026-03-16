@@ -4,7 +4,9 @@
       <div class="space-y-2">
         <p class="text-xs text-lime-300/80">Wuerfeln</p>
         <h1 class="text-xl text-lime-300 sm:text-2xl">Score Board</h1>
-        <p class="text-xs leading-relaxed text-lime-200/70 sm:text-sm">Fuer mobile Nutzung optimiert: Einen Spieler starten und beliebig viele Kacheln hinzufuegen.</p>
+        <p class="text-xs leading-relaxed text-lime-200/70 sm:text-sm">
+          Fuer mobile Nutzung optimiert: Einen Spieler starten und beliebig viele Kacheln hinzufuegen.
+        </p>
       </div>
 
       <div class="flex flex-wrap gap-2">
@@ -23,7 +25,14 @@
   </section>
 
   <div class="flex justify-center pb-2">
-    <button mat-flat-button color="primary" class="h-12! w-full! sm:w-auto! sm:px-8!" type="button" (click)="addPlayer()">+ Spieler hinzufuegen</button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="h-12! w-full! sm:w-auto! sm:px-8!"
+      type="button"
+      (click)="addPlayer()"
+    >
+      + Spieler hinzufuegen
+    </button>
   </div>
-
 </main>

@@ -1,22 +1,33 @@
-<main class="relative flex min-h-screen items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,#1f2937_0%,#050505_55%)] px-4 py-8">
-  <div class="pointer-events-none absolute -top-16 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-lime-500/20 blur-3xl"></div>
-  <mat-card class="relative w-full max-w-xl border border-lime-500/40 bg-black/70 text-lime-100 shadow-[0_0_40px_rgba(132,204,22,0.12)]">
+<main
+  class="relative flex min-h-screen items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,#1f2937_0%,#050505_55%)] px-4 py-8"
+>
+  <div
+    class="pointer-events-none absolute -top-16 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-lime-500/20 blur-3xl"
+  ></div>
+  <mat-card
+    class="relative w-full max-w-xl border border-lime-500/40 bg-black/70 text-lime-100 shadow-[0_0_40px_rgba(132,204,22,0.12)]"
+  >
     <mat-card-content class="space-y-6 p-6 text-center sm:p-10">
       <p class="text-xs uppercase tracking-[0.4em] text-lime-300/70">Pair O' Dice</p>
       <h1 class="text-3xl leading-tight text-lime-300 sm:text-4xl">Würfeln</h1>
       <p class="mx-auto max-w-md text-left text-xs leading-relaxed text-lime-200/80 sm:text-sm">
         <span>Mindestens ein Würfel muss Punkte bringen (1, 5 oder Drilling).</span>
-        <br>
-        <br>
+        <br />
+        <br />
         <span>Lege punktbringende Würfel zur Seite. Würfle mit den restlichen weiter - oder sichere deine Punkte.</span>
-        <br>
-        <br>
+        <br />
+        <br />
         <span>Wer zuerst 10.000 Punkte erreicht, gewinnt! Aber Vorsicht vor dem Fehlwurf (Macke)!</span>
       </p>
     </mat-card-content>
 
     <mat-card-actions class="m-0 mt-2 flex justify-center p-6 pt-0 sm:p-10 sm:pt-0">
-      <a mat-flat-button color="primary" class="h-12! min-h-12! w-full! text-center! sm:w-auto! sm:px-8!" routerLink="/game">
+      <a
+        mat-flat-button
+        color="primary"
+        class="h-12! min-h-12! w-full! text-center! sm:w-auto! sm:px-8!"
+        routerLink="/game"
+      >
         Start Game
       </a>
     </mat-card-actions>

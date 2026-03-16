@@ -6,11 +6,16 @@
 
   <mat-form-field appearance="outline" class="w-full">
     <mat-label>Neue Runde</mat-label>
-    <input matInput type="number" placeholder="Score" [(ngModel)]="scoreInput" (keydown.enter)="enterScore(); $event.preventDefault()" (blur)="enterScore()" />
+    <input
+      matInput
+      type="number"
+      placeholder="Score"
+      [(ngModel)]="scoreInput"
+      (keydown.enter)="enterScore(); $event.preventDefault()"
+      (blur)="enterScore()"
+    />
     @if (scoreInput !== null) {
-      <button mat-icon-button matSuffix type="button" aria-label="Save score" (click)="enterScore()">
-        ✓
-      </button>
+      <button mat-icon-button matSuffix type="button" aria-label="Save score" (click)="enterScore()">✓</button>
     }
   </mat-form-field>
 
@@ -18,7 +23,7 @@
     <div class="flex flex-wrap gap-2 rounded-xl border border-lime-500/30 bg-black/40 p-3">
       @for (entry of scoreEntries; track $index) {
         @if (entry === 0) {
-          @if ($index > 1 && scoreEntries[$index - 2] === 0) {
+          @if ($index > 1 && scoreEntries[$index - 1] === 0 && scoreEntries[$index - 2] === 0) {
             <span class="score-chip score-chip-critical">NIX! NIX! NIX!</span>
           } @else {
             @if ($index > 0 && scoreEntries[$index - 1] === 0) {
