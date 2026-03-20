@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { calculateScore, getMilestoneLabel, getScoreMilestone, isAutoWin } from './calculate-score';
 
 describe('calculateScore', () => {
