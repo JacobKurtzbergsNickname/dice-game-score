@@ -11,5 +11,5 @@ import { ActualScoreComponent } from '../actual-score/actual-score.component';
   styleUrl: './score-tile.component.css',
 })
 export class ScoreTileComponent {
-  readonly playerIndex = input.required<number>();
+  readonly playerIndex = input(1);
 }
