@@ -20,22 +20,25 @@ describe('NameInputComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('saves a trimmed name', () => {
+  it('emits trimmed name and updates draft on save', () => {
+    const emitted: string[] = [];
+    component.nameChange.subscribe((v) => emitted.push(v));
     component.draftName = '  Alex  ';
 
     component.saveName();
 
-    expect(component.name).toBe('Alex');
+    expect(emitted).toEqual(['Alex']);
     expect(component.draftName).toBe('Alex');
   });
 
-  it('clears active and draft names', () => {
-    component.name = 'Alex';
+  it('emits empty string and clears draft on remove', () => {
+    const emitted: string[] = [];
+    component.nameChange.subscribe((v) => emitted.push(v));
     component.draftName = 'Alex';
 
     component.removeName();
 
-    expect(component.name).toBe('');
+    expect(emitted).toEqual(['']);
     expect(component.draftName).toBe('');
   });
 });

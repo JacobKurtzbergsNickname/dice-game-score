@@ -1,11 +1,17 @@
 <mat-card class="border border-lime-500/40 bg-black/70 shadow-xl">
   <mat-card-content class="space-y-5 p-4 sm:p-5">
     <header class="space-y-2 pt-1">
-      <p class="text-xs text-lime-300/70">Spieler {{ playerIndex() }}</p>
+      <p class="text-xs text-lime-300/70">Spieler {{ player.id }}</p>
       <h2 class="text-sm text-lime-300 sm:text-base">Punktekarte</h2>
     </header>
 
-    <pairodice-name-input></pairodice-name-input>
-    <pairodice-actual-score></pairodice-actual-score>
+    <pairodice-name-input
+      [savedName]="player.name"
+      (nameChange)="nameChange.emit($event)"
+    ></pairodice-name-input>
+    <pairodice-actual-score
+      [scoreEntries]="player.scoreEntries"
+      (scoreEntry)="scoreEntry.emit($event)"
+    ></pairodice-actual-score>
   </mat-card-content>
 </mat-card>

@@ -1,1 +1,78 @@
 /* Tailwind and Angular Material classes are used directly in template. */
+
+/* ── Game board: horizontal carousel on mobile, grid on desktop ─────── */
+.game-board {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.game-board::-webkit-scrollbar {
+  display: none;
+}
+
+.board-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  min-width: 0; /* prevent flex overflow */
+}
+
+/* On md+ screens switch to a standard grid */
+@media (min-width: 768px) {
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: visible;
+    scroll-snap-type: none;
+    gap: 1rem;
+  }
+
+  .board-slide {
+    flex: unset;
+    scroll-snap-align: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game-board {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── Pagination dots ─────────────────────────────────────────────────────── */
+.pagination-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgb(163 230 53 / 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.pagination-dot:hover {
+  background-color: rgb(163 230 53 / 0.55);
+}
+
+.pagination-dot-active {
+  background-color: rgb(163 230 53 / 0.9);
+  transform: scale(1.4);
+}
+
+.pagination-dot-summary {
+  background-color: rgb(94 234 212 / 0.3);
+}
+
+.pagination-dot-summary:hover {
+  background-color: rgb(94 234 212 / 0.55);
+}
+
+.pagination-dot-summary.pagination-dot-active {
+  background-color: rgb(94 234 212 / 0.9);
+}

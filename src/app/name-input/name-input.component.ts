@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,16 +12,18 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './name-input.component.css',
 })
 export class NameInputComponent {
-  name = '';
+  @Input() savedName = '';
   draftName = '';
+  readonly nameChange = output<string>();
 
   saveName(): void {
-    this.name = this.draftName.trim();
-    this.draftName = this.name;
+    const trimmed = this.draftName.trim();
+    this.nameChange.emit(trimmed);
+    this.draftName = trimmed;
   }
 
   removeName(): void {
-    this.name = '';
+    this.nameChange.emit('');
     this.draftName = '';
   }
 }

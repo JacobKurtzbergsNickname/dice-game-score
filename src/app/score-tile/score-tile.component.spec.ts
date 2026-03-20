@@ -12,8 +12,8 @@ describe('ScoreTileComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(ScoreTileComponent);
-    fixture.componentRef.setInput('playerIndex', 1);
     component = fixture.componentInstance;
+    component.player = { id: 1, name: '', scoreEntries: [] };
     fixture.detectChanges();
   });
 
