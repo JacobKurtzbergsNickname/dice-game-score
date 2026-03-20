@@ -10,7 +10,7 @@
 - **UI**: Angular Material, Tailwind CSS v4
 - **SSR**: Angular SSR with Express
 - **Deployment**: Netlify
-- **Testing**: Karma + Jasmine
+- **Testing**: Vitest (Angular unit-test builder)
 - **Linting**: ESLint + angular-eslint
 - **Formatting**: Prettier
 
@@ -23,8 +23,14 @@ npm start
 # Build
 npm run build
 
-# Run unit tests
+# Run all tests (unit + e2e)
 npm test
+
+# Run unit tests only
+npm run test:unit
+
+# Run e2e tests only
+npm run test:e2e
 
 # Lint
 npm run lint
@@ -41,7 +47,7 @@ npm run serve:ssr:dice-game-score
 
 ## Project Structure
 
-```
+```directory
 src/app/
   landing-page/       # Home/welcome screen
   score-board/        # Main game board with player management

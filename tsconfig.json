@@ -1,6 +1,7 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
+  "exclude": ["src/**/*.spec.ts", "e2e/**/*.ts"],
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "strict": true,
