@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
 import { ScoreBoardComponent } from './score-board.component';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('ScoreBoardComponent', () => {
   let component: ScoreBoardComponent;
