@@ -18,11 +18,69 @@
     </div>
   </header>
 
-  <section class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-    @for (player of players(); track player) {
-      <pairodice-score-tile [playerIndex]="$index + 1"></pairodice-score-tile>
+  <!-- ── Single game board: carousel on mobile, grid on md+ ────────────── -->
+  <div class="game-board" data-testid="game-board" (scroll)="onCarouselScroll($event)" #carousel>
+    @for (player of players(); track player.id) {
+      <div class="board-slide" [attr.data-testid]="'player-slide-' + player.id">
+        <pairodice-score-tile
+          [player]="player"
+          (nameChange)="updatePlayerName(player.id, $event)"
+          (scoreEntry)="addScoreEntry(player.id, $event)"
+        ></pairodice-score-tile>
+      </div>
     }
-  </section>
+
+    <!-- Summary card — last slide on mobile only, hidden in desktop grid -->
+    <div class="board-slide md:hidden" data-testid="summary-slide">
+      <mat-card class="border border-lime-500/40 bg-black/70 shadow-xl">
+        <mat-card-content class="space-y-5 p-4 sm:p-5">
+          <header class="space-y-2 pt-1">
+            <p class="text-xs text-lime-300/70">Ergebnis</p>
+            <h2 class="text-sm text-lime-300 sm:text-base">Uebersicht</h2>
+          </header>
+
+          <div class="space-y-3">
+            @for (player of players(); track player.id) {
+              <div
+                class="flex items-center justify-between rounded-xl border border-lime-500/30 bg-black/50 p-3"
+                [attr.data-testid]="'summary-row-' + player.id"
+              >
+                <div>
+                  <p class="text-xs text-lime-300/70">Spieler {{ player.id }}</p>
+                  <p class="text-sm text-lime-200">{{ player.name || 'Spieler ' + player.id }}</p>
+                </div>
+                <p class="text-xl text-lime-200" [attr.data-testid]="'summary-score-' + player.id">
+                  {{ playerScore(player) }}
+                </p>
+              </div>
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Pagination dots — mobile only -->
+  <div class="md:hidden flex justify-center gap-2 pt-4" role="tablist" aria-label="Spielernavigation">
+    @for (player of players(); track player.id; let i = $index) {
+      <button
+        class="pagination-dot"
+        [class.pagination-dot-active]="activeSlide() === i"
+        (click)="scrollToSlide(i)"
+        [attr.aria-label]="'Spieler ' + player.id"
+        [attr.aria-selected]="activeSlide() === i"
+        role="tab"
+      ></button>
+    }
+    <button
+      class="pagination-dot pagination-dot-summary"
+      [class.pagination-dot-active]="activeSlide() === players().length"
+      (click)="scrollToSlide(players().length)"
+      aria-label="Ergebnisuebersicht"
+      [attr.aria-selected]="activeSlide() === players().length"
+      role="tab"
+    ></button>
+  </div>
 
   <div class="flex justify-center pb-2">
     <button

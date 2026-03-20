@@ -1,7 +1,8 @@
-import { Component, input } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { NameInputComponent } from '../name-input/name-input.component';
 import { ActualScoreComponent } from '../actual-score/actual-score.component';
+import { PlayerData } from '../player';
 
 @Component({
   selector: 'pairodice-score-tile',
@@ -11,5 +12,7 @@ import { ActualScoreComponent } from '../actual-score/actual-score.component';
   styleUrl: './score-tile.component.css',
 })
 export class ScoreTileComponent {
-  readonly playerIndex = input(1);
+  @Input({ required: true }) player!: PlayerData;
+  readonly nameChange = output<string>();
+  readonly scoreEntry = output<number>();
 }

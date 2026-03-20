@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { calculateScore, getMilestoneLabel, getScoreMilestone, isAutoWin, type ScoreMilestone } from './calculate-score';
+import {
+  calculateScore,
+  getMilestoneLabel,
+  getScoreMilestone,
+  isAutoWin,
+  type ScoreMilestone,
+} from './calculate-score';
 
 @Component({
   selector: 'pairodice-actual-score',
@@ -14,9 +20,13 @@ import { calculateScore, getMilestoneLabel, getScoreMilestone, isAutoWin, type S
   styleUrls: ['./actual-score.component.css'],
 })
 export class ActualScoreComponent {
-  score = 0;
+  @Input() scoreEntries: number[] = [];
   scoreInput: number | null = null;
-  readonly scoreEntries: number[] = [];
+  readonly scoreEntry = output<number>();
+
+  get score(): number {
+    return calculateScore(this.scoreEntries);
+  }
 
   get scoreMilestone(): ScoreMilestone {
     return getScoreMilestone(this.score);
@@ -35,8 +45,7 @@ export class ActualScoreComponent {
       return;
     }
 
-    this.scoreEntries.push(this.scoreInput);
+    this.scoreEntry.emit(this.scoreInput);
     this.scoreInput = null;
-    this.score = calculateScore(this.scoreEntries);
   }
 }

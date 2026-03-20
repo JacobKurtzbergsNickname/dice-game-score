@@ -18,11 +18,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         launchOptions: {
-          args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--proxy-server=direct://',
-          ],
+          args: ['--no-sandbox', '--disable-setuid-sandbox', '--proxy-server=direct://'],
         },
       },
     },
