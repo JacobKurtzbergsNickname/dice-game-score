@@ -13,6 +13,9 @@ test.describe('Score reset logic', () => {
     const input = page.locator('pairodice-actual-score input[type="number"]').first();
     await input.fill(String(value));
     await input.press('Enter');
+    // Wait for the input to clear after score is processed
+    await input.waitFor({ state: 'attached' });
+    await page.waitForTimeout(50);
   }
 
   async function getScore(page: import('@playwright/test').Page): Promise<number> {
