@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActualScoreComponent } from './actual-score.component';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('ActualScoreComponent', () => {
   let component: ActualScoreComponent;
