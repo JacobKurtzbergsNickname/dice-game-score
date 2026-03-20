@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
 import { ScoreBoardComponent } from './score-board.component';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('ScoreBoardComponent', () => {
   let component: ScoreBoardComponent;
@@ -17,6 +17,8 @@ describe('ScoreBoardComponent', () => {
     fixture = TestBed.createComponent(ScoreBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    HTMLElement.prototype.scrollTo = vi.fn();
   });
 
   it('should create', () => {
@@ -28,33 +30,47 @@ describe('ScoreBoardComponent', () => {
     expect(component.players()[0]).toMatchObject({ id: 1, name: '', scoreEntries: [] });
   });
 
-  it('adds a new player without affecting existing ones', () => {
+  it('adds a new player without affecting existing ones', fakeAsync(() => {
     component.updatePlayerName(1, 'Alice');
     component.addScoreEntry(1, 10);
     component.addPlayer();
+    tick();
 
     expect(component.players()).toHaveLength(2);
     expect(component.players()[0]).toMatchObject({ name: 'Alice', scoreEntries: [10] });
     expect(component.players()[1]).toMatchObject({ id: 2, name: '', scoreEntries: [] });
-  });
+  }));
 
-  it('updates the name of a specific player', () => {
+  it('scrolls to the new player slide after addPlayer()', fakeAsync(() => {
     component.addPlayer();
+    tick();
+
+    expect(HTMLElement.prototype.scrollTo).toHaveBeenCalledWith({
+      left: expect.any(Number),
+      behavior: 'smooth',
+    });
+    expect(component.activeSlide()).toBe(1);
+  }));
+
+  it('updates the name of a specific player', fakeAsync(() => {
+    component.addPlayer();
+    tick();
     component.updatePlayerName(1, 'Alice');
     component.updatePlayerName(2, 'Bob');
 
     expect(component.players()[0].name).toBe('Alice');
     expect(component.players()[1].name).toBe('Bob');
-  });
+  }));
 
-  it('adds a score entry to a specific player', () => {
+  it('adds a score entry to a specific player', fakeAsync(() => {
     component.addPlayer();
+    tick();
     component.addScoreEntry(1, 5);
     component.addScoreEntry(2, 10);
 
     expect(component.players()[0].scoreEntries).toEqual([5]);
     expect(component.players()[1].scoreEntries).toEqual([10]);
-  });
+  }));
 
   it('computes the score correctly via playerScore()', () => {
     component.addScoreEntry(1, 10);
