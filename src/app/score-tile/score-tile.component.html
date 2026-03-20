@@ -5,10 +5,7 @@
       <h2 class="text-sm text-lime-300 sm:text-base">Punktekarte</h2>
     </header>
 
-    <pairodice-name-input
-      [savedName]="player.name"
-      (nameChange)="nameChange.emit($event)"
-    ></pairodice-name-input>
+    <pairodice-name-input [savedName]="player.name" (nameChange)="nameChange.emit($event)"></pairodice-name-input>
     <pairodice-actual-score
       [scoreEntries]="player.scoreEntries"
       (scoreEntry)="scoreEntry.emit($event)"

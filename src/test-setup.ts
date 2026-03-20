@@ -3,10 +3,7 @@ import 'zone.js/testing';
 
 import { ɵresolveComponentResources as resolveComponentResources } from '@angular/core';
 import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { beforeEach } from 'vitest';
 
 const templateResources = import.meta.glob('./app/**/*.html', {
@@ -27,7 +24,10 @@ const componentResources = {
 };
 
 function normalizeResourceUrl(url: string): string {
-  return url.replace(/[?#].*$/, '').replace(/^\.\//, '').replace(/\\/g, '/');
+  return url
+    .replace(/[?#].*$/, '')
+    .replace(/^\.\//, '')
+    .replace(/\\/g, '/');
 }
 
 function resolveTestResource(url: string): Promise<string> {
@@ -44,10 +44,7 @@ function resolveTestResource(url: string): Promise<string> {
   return Promise.resolve(matchingResource[1]);
 }
 
-getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting(),
-);
+getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
 beforeEach(async () => {
   await resolveComponentResources(resolveTestResource);

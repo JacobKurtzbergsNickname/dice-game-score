@@ -4,7 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { calculateScore, getMilestoneLabel, getScoreMilestone, isAutoWin, type ScoreMilestone } from './calculate-score';
+import {
+  calculateScore,
+  getMilestoneLabel,
+  getScoreMilestone,
+  isAutoWin,
+  type ScoreMilestone,
+} from './calculate-score';
 
 @Component({
   selector: 'pairodice-actual-score',

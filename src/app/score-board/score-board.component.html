@@ -19,12 +19,7 @@
   </header>
 
   <!-- ── Single game board: carousel on mobile, grid on md+ ────────────── -->
-  <div
-    class="game-board"
-    data-testid="game-board"
-    (scroll)="onCarouselScroll($event)"
-    #carousel
-  >
+  <div class="game-board" data-testid="game-board" (scroll)="onCarouselScroll($event)" #carousel>
     @for (player of players(); track player.id) {
       <div class="board-slide" [attr.data-testid]="'player-slide-' + player.id">
         <pairodice-score-tile
@@ -54,10 +49,9 @@
                   <p class="text-xs text-lime-300/70">Spieler {{ player.id }}</p>
                   <p class="text-sm text-lime-200">{{ player.name || 'Spieler ' + player.id }}</p>
                 </div>
-                <p
-                  class="text-xl text-lime-200"
-                  [attr.data-testid]="'summary-score-' + player.id"
-                >{{ playerScore(player) }}</p>
+                <p class="text-xl text-lime-200" [attr.data-testid]="'summary-score-' + player.id">
+                  {{ playerScore(player) }}
+                </p>
               </div>
             }
           </div>

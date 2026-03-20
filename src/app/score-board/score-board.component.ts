@@ -36,9 +36,7 @@ export class ScoreBoardComponent {
   }
 
   addScoreEntry(id: number, entry: number): void {
-    this.players.update((ps) =>
-      ps.map((p) => (p.id === id ? { ...p, scoreEntries: [...p.scoreEntries, entry] } : p)),
-    );
+    this.players.update((ps) => ps.map((p) => (p.id === id ? { ...p, scoreEntries: [...p.scoreEntries, entry] } : p)));
   }
 
   playerScore(player: PlayerData): number {
